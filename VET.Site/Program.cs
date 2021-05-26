@@ -1,26 +1,38 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+// <copyright file="Program.cs" company="SysRC">
+// Copyright (c) SysRC. All rights reserved.
+// </copyright>
 
 namespace VET.Site
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+    using VET.DataBase.Seed;
+
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            var varHost = CreateWebHostBuilder(args).Build();
+            using (var scope = varHost.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                try
+                {
+                    await VETSeedData.EnsureVETSeedData(scope.ServiceProvider);
+                }
+                catch (Exception)
+                {
+                }
+            }
+
+            varHost.Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+                WebHost.CreateDefaultBuilder(args)
+                    .UseStartup<Startup>();
     }
 }

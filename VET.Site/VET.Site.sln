@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VET.Site", "VET.Site.csproj", "{3E12D2FF-120C-4E78-96F9-E0372E95786F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VET.DataBase", "..\VET.DataBase\VET.DataBase.csproj", "{36DDE399-E640-4744-B134-F056C8F377DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VET.DataBase.Seed", "..\VET.DataBase.Seed\VET.DataBase.Seed.csproj", "{1E8FF221-CDDA-42D5-9ADD-67787F710A4D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{3E12D2FF-120C-4E78-96F9-E0372E95786F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E12D2FF-120C-4E78-96F9-E0372E95786F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E12D2FF-120C-4E78-96F9-E0372E95786F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36DDE399-E640-4744-B134-F056C8F377DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36DDE399-E640-4744-B134-F056C8F377DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36DDE399-E640-4744-B134-F056C8F377DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36DDE399-E640-4744-B134-F056C8F377DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E8FF221-CDDA-42D5-9ADD-67787F710A4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E8FF221-CDDA-42D5-9ADD-67787F710A4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E8FF221-CDDA-42D5-9ADD-67787F710A4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E8FF221-CDDA-42D5-9ADD-67787F710A4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
