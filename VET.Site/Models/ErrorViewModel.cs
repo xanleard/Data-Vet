@@ -1,4 +1,6 @@
-using System;
+// <copyright file="ErrorViewModel.cs" company="SysRC">
+// Copyright (c) SysRC. All rights reserved.
+// </copyright>
 
 namespace VET.Site.Models
 {
