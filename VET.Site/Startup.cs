@@ -24,6 +24,8 @@ namespace VET.Site
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddCloudscribeNavigation(Configuration.GetSection("NavigationOptions"));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

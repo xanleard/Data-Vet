@@ -74,14 +74,7 @@
 
 
                 <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-                             with font-awesome or any other icon font library -->
-
-                      
-                    </ul>
-                </nav>
+                <partial name="Sidebar/_DefaultSidebar" />
                 <!-- /.sidebar-menu -->
             </div>
             <!-- /.sidebar -->
@@ -97,10 +90,9 @@
                             <h1 class="m-0">Dashboard</h1>
                         </div><!-- /.col -->
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active">Dashboard v1</li>
-                            </ol>
+
+                                <partial name="Content/_Breadcrumb" />
+
                         </div><!-- /.col -->
                     </div><!-- /.row -->
                 </div><!-- /.container-fluid -->

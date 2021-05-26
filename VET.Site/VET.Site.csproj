@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="cloudscribe.Web.Navigation" Version="4.1.8" />
+    <PackageReference Include="cloudscribe.Web.SiteMap.FromNavigation" Version="4.1.1" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

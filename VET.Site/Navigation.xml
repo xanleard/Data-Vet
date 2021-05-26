@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NavNode key="IndexMapping"
+		area=""
+		controller="Home"
+		action="Index"
+		componentVisibility="breadcrumbs,childtree,parenttree"
+		text="Inicio">
+  <Children>
+    <NavNode key="AdminGrouping"
+				area =""
+				controller="Home"
+				action="Index"
+      url=""
+				preservedRouteParameters=""
+				iconCssClass="fas fa-cogs"
+               authorizationPolicy=""
+				title="Configuración">
+      
+    </NavNode>
+
+  </Children>
+</NavNode>
