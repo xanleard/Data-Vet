@@ -10,7 +10,6 @@ namespace VET.Site.Controllers
     using Microsoft.Extensions.Logging;
     using VET.Site.Models;
 
-    [Authorize(Policy = "RequireAdminRole")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -20,6 +19,7 @@ namespace VET.Site.Controllers
             _logger = logger;
         }
 
+        [Authorize(Policy = "RequireAdminRole")]
         public IActionResult Index()
         {
             return View();
