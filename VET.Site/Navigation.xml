@@ -13,10 +13,51 @@
       url=""
 				preservedRouteParameters=""
 				iconCssClass="fas fa-cogs"
-               authorizationPolicy=""
+               authorizationPolicy="RequireAdminRole"
 				title="Configuración">
-      
-    </NavNode>
+      <Children>
+        <NavNode key="AdminMante"
+     
+  preservedRouteParameters=""
+  iconCssClass="fas fa-briefcase"
+         authorizationPolicy="RequireAdminRole"
+  title="Mantenimientos">
+          <Children>
+            <NavNode key="DeptoMante"
+           controller="TypeAnimal"
+             action="Index"
+            preservedRouteParameters=""
+            iconCssClass="fas fa-sitemap"
+            title="Tipos de Animales">
+              <Children>
 
+                <NavNode key="CreateTypeAnimal"
+                area =""
+                controller="TypeAnimal"
+                action="Create"
+                preservedRouteParameters=""
+                iconCssClass=""
+                componentVisibility="breadcrumbs"
+                title="Crear tipo de animal">
+                </NavNode>
+
+                <NavNode key="EditTypeAnimal"
+              area =""
+              controller="TypeAnimal"
+              action="Edit"
+              preservedRouteParameters=""
+              iconCssClass=""
+              authorizationPolicy=""
+              componentVisibility="breadcrumbs"
+              title="Editar tipo de animal">
+                </NavNode>
+
+              </Children>
+            </NavNode>
+
+          </Children>
+        </NavNode>
+      </Children>
+    </NavNode>
   </Children>
 </NavNode>
