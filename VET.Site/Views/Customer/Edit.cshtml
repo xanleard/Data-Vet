@@ -1,17 +1,15 @@
-﻿@model VET.Site.Models.Customers.CreateCustomersViewModel
+﻿@model VET.Site.Models.Customers.EditCustomersViewModel
 @{
-    ViewData["Title"] = "Crear";
+    ViewData["Title"] = "Editar";
 }
 
 <div class="container-fluid">
     <!-- SELECT2 EXAMPLE -->
     <div class="card card-default">
         <div class="card-header">
-            <h3 class="card-title">Crear Cliente.</h3>
+            <h3 class="card-title">Editar cliente.</h3>
 
             <div class="card-tools">
-        
-
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
             </div>
@@ -25,7 +23,7 @@
                 {
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
-                            <div class="body bg-red">
+                            <div class="body bg-red ">
                                 <div asp-validation-summary="ModelOnly"></div>
                             </div>
                         </div>
@@ -38,9 +36,8 @@
                             <label>Nombre</label>
                             <input asp-for="Name" class="form-control" />
                             <label>
-                                <span class="right badge badge-danger" asp-validation-for="Name"></span>
+                                <span class="right badge badge-danger " asp-validation-for="Name"></span>
                             </label>
-
                         </div>
                         <!-- /.form-group -->
                         <div class="form-group">
@@ -107,8 +104,6 @@
                             </label>
 
                         </div>
-                        
-
                         <!-- /.form-group -->
                     </div>
 
@@ -125,10 +120,10 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h4 class="modal-title" id="defaultModalLabel">Crear cliente</h4>
+                                <h4 class="modal-title" id="defaultModalLabel">Editar cliente</h4>
                             </div>
                             <div class="modal-body">
-                                ¿Desea crear el cliente?
+                                ¿Desea editar el cliente?
                             </div>
                             <div class="modal-footer">
                                 <input type="submit" id="submitbutton" value="Guardar cambios" data-disableonclick="true" class="btn btn-primary waves-effect" />
@@ -139,7 +134,7 @@
                 </div>
 
             </div>
-            </form>
+        </form>
     </div>
     <!-- /.card -->
 </div>
