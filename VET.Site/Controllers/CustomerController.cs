@@ -12,6 +12,7 @@ namespace VET.Site.Controllers
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using VET.Core.Customers;
+    using VET.DataBase.Models;
     using VET.Site.Models.Customers;
 
     public class CustomerController : Controller
@@ -43,6 +44,77 @@ namespace VET.Site.Controllers
             });
 
             return this.View(customerList);
+        }
+
+        [Authorize(Policy = "RequireAdminRole")]
+        public IActionResult Create()
+        {
+            return this.View("Create");
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "RequireAdminRole")]
+        public async Task<IActionResult> Create(CreateCustomersViewModel createModel)
+        {
+            if (createModel == null)
+            {
+                return this.BadRequest();
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(createModel);
+            }
+
+            var newcustome = new Customer
+            {
+                Name = createModel.Name,
+                IdentificationCard = createModel.IdentificationCard,
+                BirthDate = createModel.BirthDate.ToString(),
+                Direction = createModel.Direction,
+                Telephone1 = createModel.Telephone1,
+                Telephone2 = createModel.Telephone2,
+                Email = createModel.Email,
+                CreationDate = createModel.CreationDate,
+                UpdateDate = createModel.UpdateDate,
+            };
+
+            var result = await this.customersManager.CreateAsync(newcustome);
+            if (!result.Succeeded)
+            {
+                foreach (var kvp in result.ValidationMessages)
+                {
+                    foreach (var message in kvp.Value)
+                    {
+                        this.ModelState.AddModelError(kvp.Key, message);
+                    }
+                }
+
+                return this.View(createModel);
+            }
+
+            return this.RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        [Authorize(Policy = "RequireAdminRole")]
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return this.BadRequest();
+            }
+
+            var oldcustomer = await this.customersManager.FindByIdAsync(id.Value);
+
+            if (oldcustomer == null)
+            {
+                return this.NotFound();
+            }
+
+            await this.customersManager.DeleteAsync(oldcustomer);
+
+            return this.RedirectToAction("Index");
         }
     }
 }
