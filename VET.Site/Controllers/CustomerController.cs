@@ -70,7 +70,7 @@ namespace VET.Site.Controllers
             {
                 Name = createModel.Name,
                 IdentificationCard = createModel.IdentificationCard,
-                BirthDate = createModel.BirthDate.ToString(),
+                BirthDate = createModel.BirthDate,
                 Direction = createModel.Direction,
                 Telephone1 = createModel.Telephone1,
                 Telephone2 = createModel.Telephone2,
@@ -139,7 +139,7 @@ namespace VET.Site.Controllers
             }
             customerToEdit.Name = editModel.Name;
             customerToEdit.IdentificationCard = editModel.IdentificationCard;
-            customerToEdit.BirthDate = editModel.BirthDate.ToString();
+            customerToEdit.BirthDate = editModel.BirthDate;
             customerToEdit.Direction = editModel.Direction;
             customerToEdit.Telephone1 = editModel.Telephone1;
             customerToEdit.Telephone2 = editModel.Telephone2;
@@ -184,7 +184,7 @@ namespace VET.Site.Controllers
                 Id = editList.Id,
                 Name = editList.Name,
                 IdentificationCard = editList.IdentificationCard,
-                BirthDate = DateTime.ParseExact(editList.BirthDate, "dd/MM/yyyy", null),
+                BirthDate = editList.BirthDate,
                 Direction = editList.Direction,
                 Telephone1 = editList.Telephone1,
                 Telephone2 = editList.Telephone2,

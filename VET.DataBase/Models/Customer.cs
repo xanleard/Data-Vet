@@ -14,7 +14,7 @@ namespace VET.DataBase.Models
 
         public string IdentificationCard { get; set; }
 
-        public string BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public string Direction { get; set; }
 
