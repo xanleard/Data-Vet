@@ -13,8 +13,11 @@ namespace VET.Site
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
+    using VET.Core.Animals;
     using VET.Core.Customers;
+    using VET.Core.Sexes;
     using VET.Core.TypeAnimals;
+    using VET.Core.UnitMeasurements;
     using VET.DataBase.Contexts;
     using VET.DataBase.Identity;
     using VET.DataBase.Models;
@@ -103,8 +106,14 @@ namespace VET.Site
 
             services.AddScoped<IRepository<TypeAnimal>, BaseSiteDbContextRepositoryBase<TypeAnimal>>();
             services.AddScoped<IRepository<Customer>, BaseSiteDbContextRepositoryBase<Customer>>();
+            services.AddScoped<IRepository<Sex>, BaseSiteDbContextRepositoryBase<Sex>>();
+            services.AddScoped<IRepository<UnitMeasurement>, BaseSiteDbContextRepositoryBase<UnitMeasurement>>();
+            services.AddScoped<IRepository<Animal>, BaseSiteDbContextRepositoryBase<Animal>>();
             services.AddScoped<ITypeAnimalsManager, TypeAnimalsManager>();
             services.AddScoped<ICustomersManager, CustomersManager>();
+            services.AddScoped<ISexesManager, SexesManager>();
+            services.AddScoped<IUnitMeasurementsManager, UnitMeasurementsManager>();
+            services.AddScoped<IAnimalsManager, AnimalsManager>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

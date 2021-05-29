@@ -33,6 +33,12 @@ namespace VET.DataBase.Seed
 
             context.TypeAnimals.Add(new TypeAnimal { Id = 1, Description = "Perro" });
             context.TypeAnimals.Add(new TypeAnimal { Id = 2, Description = "Gato" });
+
+            context.Sexes.Add(new Sex { Id = 1, Description = "Macho" });
+            context.Sexes.Add(new Sex { Id = 2, Description = "Hembra" });
+
+            context.UnitMeasurements.Add(new UnitMeasurement { Id = 1, Description = "lb" });
+            context.UnitMeasurements.Add(new UnitMeasurement { Id = 2, Description = "kg" });
             await context.SaveChangesAsync();
         }
     }
