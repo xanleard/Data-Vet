@@ -22,7 +22,7 @@ namespace VET.Site.Models.Animals
 
         public string UnitMeasurementName { get; set; }
 
-        public string Obsercacioens { get; set; }
+        public string Observations { get; set; }
 
         public DateTime LastVisit { get; set; }
 

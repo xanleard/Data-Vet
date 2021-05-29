@@ -20,7 +20,7 @@
         public decimal Weight { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        public string Obsercacioens { get; set; }
+        public string Observations { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
         public DateTime LastVisit { get; set; }

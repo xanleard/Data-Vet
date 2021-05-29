@@ -29,7 +29,7 @@ namespace VET.DataBase.Models
 
         public UnitMeasurement UnitMeasurements { get; set; }
 
-        public string Obsercacioens { get; set; }
+        public string Observations { get; set; }
 
         public DateTime LastVisit { get; set; }
 

@@ -31,7 +31,4 @@
     <ProjectReference Include="..\VET.DataBase.Seed\VET.DataBase.Seed.csproj" />
     <ProjectReference Include="..\VET.DataBase\VET.DataBase.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Animals\" />
-  </ItemGroup>
 </Project>
