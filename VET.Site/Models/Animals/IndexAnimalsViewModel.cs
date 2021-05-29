@@ -5,6 +5,7 @@
 namespace VET.Site.Models.Animals
 {
     using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class IndexAnimalsViewModel
     {
@@ -24,10 +25,16 @@ namespace VET.Site.Models.Animals
 
         public string Observations { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime LastVisit { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime CreationDate { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        [DataType(DataType.Date)]
         public DateTime DateUpdate { get; set; }
 
         public string TypeAnimalName { get; set; }

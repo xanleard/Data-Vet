@@ -22,7 +22,7 @@
                              authorizationPolicy="RequireAdminRole"
                       title="Mantenimientos">
                       <Children>
-                        <NavNode key="DeptoMante"
+                        <NavNode key="TypeAnimalMante"
                          controller="TypeAnimal"
                           action="Index"
                           preservedRouteParameters=""
@@ -50,18 +50,72 @@
                             </NavNode>
                           </Children>
                         </NavNode>
-
-                      </Children>
-                      <Children>
-                        <NavNode key="DeptoMante"
-                         controller="Customer"
-                          action="Index"
-                          preservedRouteParameters=""
-                          iconCssClass="fas fa-users"
-                          title="Clientes">
-                      <Children>
-                  </Children>
-                </NavNode>
+                        <NavNode key="AnimalMante"
+                                               controller="Animals"
+                                                action="Index"
+                                                preservedRouteParameters=""
+                                                iconCssClass="fas fa-dog"
+                                                title="Animales">
+                          <Children>
+                            <NavNode key="CreateAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Create"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                componentVisibility="breadcrumbs"
+                                title="Crear animal">
+                            </NavNode>
+                            <NavNode key="EditAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Edit"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Editar animal">
+                            </NavNode>
+                            <NavNode key="DetailAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Detail"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Detalle del animal">
+                            </NavNode>
+                          </Children>
+                        </NavNode>
+                        <NavNode key="CustomerMante"
+                                                 controller="Customer"
+                                                  action="Index"
+                                                  preservedRouteParameters=""
+                                                  iconCssClass="fas fa-users"
+                                                  title="Clientes">
+                          <Children>
+                            <NavNode key="CreateCustomer"
+                        area =""
+                        controller="Customer"
+                        action="Create"
+                        preservedRouteParameters=""
+                        iconCssClass=""
+                        componentVisibility="breadcrumbs"
+                        title="Crear cliente">
+                            </NavNode>
+                            <NavNode key="EditCustomer"
+                                area =""
+                                controller="Customer"
+                                action="Edit"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Editar cliente">
+                            </NavNode>
+                          </Children>
+                        </NavNode>
                       </Children>
                   </NavNode>
              </Children>

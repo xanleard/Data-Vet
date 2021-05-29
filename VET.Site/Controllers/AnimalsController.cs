@@ -70,6 +70,7 @@ namespace VET.Site.Controllers
             model.TypeAnimals = await this.typeAnimalsManager.GetAllAsync();
             model.Sexes = await this.sexesManager.GetAllAsync();
             model.Customers = await this.customersManager.GetAllAsync();
+            model.LastVisit = DateTime.Now;
             return this.View(model);
         }
 
@@ -91,9 +92,48 @@ namespace VET.Site.Controllers
                 return this.View(createModel);
             }
 
+            var unit = await this.unitMeasurementsManager.FindByIdAsync(createModel.UnitMeasurementId);
+
+            if (unit == null)
+            {
+                return this.NotFound();
+            }
+
+            var sex = await this.sexesManager.FindByIdAsync(createModel.SexId);
+
+            if (sex == null)
+            {
+                return this.NotFound();
+            }
+
+            var customer = await this.customersManager.FindByIdAsync(createModel.CustomerId);
+
+            if (customer == null)
+            {
+                return this.NotFound();
+            }
+
+            var typeanimal = await this.typeAnimalsManager.FindByIdAsync(createModel.TypeAnimalId);
+
+            if (typeanimal == null)
+            {
+                return this.NotFound();
+            }
+
             var newanimal = new Animal
             {
+                CustomerId = createModel.CustomerId,
+                DateUpdate = DateTime.Now,
                 CreationDate = DateTime.Now,
+                LastVisit = DateTime.Now,
+                IdentificationCard = createModel.IdentificationCard,
+                Name = createModel.Name,
+                Race = createModel.Race,
+                Observations = createModel.Observations,
+                SexId = createModel.SexId,
+                TypeAnimalId = createModel.TypeAnimalId,
+                UnitMeasurementId = createModel.UnitMeasurementId,
+                Weight = createModel.Weight,
             };
 
             var result = await this.animalsManager.CreateAsync(newanimal);
@@ -126,22 +166,33 @@ namespace VET.Site.Controllers
                 return this.BadRequest();
             }
 
-            var editList = await this.animalsManager.FindByIdAsync(id.Value);
+            var edit = await this.animalsManager.FindByIdAsync(id.Value);
 
-            if (editList == null)
+            if (edit == null)
             {
                 return this.NotFound();
             }
 
-            var list = new EditAnimalsViewModel
-            {
+            var model = new EditAnimalsViewModel
+            { 
+                Id = edit.Id,
+                LastVisit = edit.LastVisit,
+                CustomerId = edit.CustomerId,
+                IdentificationCard = edit.IdentificationCard,
+                Name = edit.Name,
+                Observations = edit.Observations,
+                Race = edit.Race,
+                SexId = edit.SexId,
+                TypeAnimalId = edit.TypeAnimalId,
+                UnitMeasurementId = edit.UnitMeasurementId,
+                Weight = edit.Weight,
                 UnitMeasurements = await this.unitMeasurementsManager.GetAllAsync(),
                 TypeAnimals = await this.typeAnimalsManager.GetAllAsync(),
                 Sexes = await this.sexesManager.GetAllAsync(),
                 Customers = await this.customersManager.GetAllAsync(),
             };
 
-            return this.View(list);
+            return this.View(model);
         }
 
         [HttpPost]
@@ -162,6 +213,34 @@ namespace VET.Site.Controllers
                 return this.View(editModel);
             }
 
+            var unit = await this.unitMeasurementsManager.FindByIdAsync(editModel.UnitMeasurementId);
+
+            if (unit == null)
+            {
+                return this.NotFound();
+            }
+
+            var sex = await this.sexesManager.FindByIdAsync(editModel.SexId);
+
+            if (sex == null)
+            {
+                return this.NotFound();
+            }
+
+            var customer = await this.customersManager.FindByIdAsync(editModel.CustomerId);
+
+            if (customer == null)
+            {
+                return this.NotFound();
+            }
+
+            var typeanimal = await this.typeAnimalsManager.FindByIdAsync(editModel.TypeAnimalId);
+
+            if (typeanimal == null)
+            {
+                return this.NotFound();
+            }
+
             var animalToEdit = await this.animalsManager.FindByIdAsync(editModel.Id);
 
             if (animalToEdit == null)
@@ -170,7 +249,16 @@ namespace VET.Site.Controllers
             }
 
             animalToEdit.DateUpdate = DateTime.Now;
-
+            animalToEdit.CustomerId = editModel.CustomerId;
+            animalToEdit.IdentificationCard = editModel.IdentificationCard;
+            animalToEdit.LastVisit = editModel.LastVisit;
+            animalToEdit.Name = editModel.Name;
+            animalToEdit.Observations = editModel.Observations;
+            animalToEdit.Race = editModel.Race;
+            animalToEdit.SexId = editModel.SexId;
+            animalToEdit.TypeAnimalId = animalToEdit.TypeAnimalId;
+            animalToEdit.UnitMeasurementId = editModel.UnitMeasurementId;
+            animalToEdit.Weight = editModel.Weight;
             var editResult = await this.animalsManager.EditAsync(animalToEdit);
 
             if (!editResult.Succeeded)
@@ -227,6 +315,14 @@ namespace VET.Site.Controllers
             {
                 Id = animal.Id,
                 CustomerName = animal.Customers.Name,
+                Email = animal.Customers.Email,
+                Telephone1 = animal.Customers.Telephone1,
+                Telephone2 = animal.Customers.Telephone2,
+                IdentificationCard = animal.IdentificationCard,
+                Weight = animal.Weight,
+                Observations = animal.Observations,
+                CreationDate = animal.CreationDate,
+                DateUpdate = animal.DateUpdate,
                 Name = animal.Name,
                 Race = animal.Race,
                 SexName = animal.Sexes.Description,

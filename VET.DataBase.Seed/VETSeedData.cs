@@ -31,14 +31,14 @@ namespace VET.DataBase.Seed
 
             var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
 
-            context.TypeAnimals.Add(new TypeAnimal { Id = 1, Description = "Perro" });
-            context.TypeAnimals.Add(new TypeAnimal { Id = 2, Description = "Gato" });
+            context.TypeAnimals.Add(new TypeAnimal { Description = "Perro" });
+            context.TypeAnimals.Add(new TypeAnimal { Description = "Gato" });
 
-            context.Sexes.Add(new Sex { Id = 1, Description = "Macho" });
-            context.Sexes.Add(new Sex { Id = 2, Description = "Hembra" });
+            context.Sexes.Add(new Sex { Description = "Macho" });
+            context.Sexes.Add(new Sex { Description = "Hembra" });
 
-            context.UnitMeasurements.Add(new UnitMeasurement { Id = 1, Description = "lb" });
-            context.UnitMeasurements.Add(new UnitMeasurement { Id = 2, Description = "kg" });
+            context.UnitMeasurements.Add(new UnitMeasurement { Description = "lb" });
+            context.UnitMeasurements.Add(new UnitMeasurement { Description = "kg" });
             await context.SaveChangesAsync();
         }
     }

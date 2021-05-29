@@ -22,6 +22,8 @@
         [Required(ErrorMessage = "El campo es obligatorio.")]
         public string Observations { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Required(ErrorMessage = "El campo es obligatorio.")]
         public DateTime LastVisit { get; set; }
 

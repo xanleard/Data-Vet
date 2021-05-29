@@ -37,7 +37,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Cliente</label>
-                                <select class="form-control select2 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
                                 <label>
                                     <span class="right badge badge-danger " asp-validation-for="CustomerId"></span>
                                 </label>
@@ -82,7 +82,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Sexo</label>
-                                <select class="form-control select2 " style="width: 100%;" id="SexValue" asp-for="SexId" data-live-search="true" title="Seleccione un sexo." asp-items="@(new SelectList(Model.Sexes,"Id","Description"))"></select>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="SexValue" asp-for="SexId" data-live-search="true" title="Seleccione un sexo." asp-items="@(new SelectList(Model.Sexes,"Id","Description"))"></select>
                                 <label>
                                     <span class="right badge badge-danger " asp-validation-for="SexId"></span>
                                 </label>
@@ -94,7 +94,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Tipo animal</label>
-                                <select class="form-control select2 " style="width: 100%;" id="TypeAnimalValue" asp-for="TypeAnimalId" data-live-search="true" title="Seleccione un tipo de animal." asp-items="@(new SelectList(Model.TypeAnimals,"Id","Description"))"></select>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="TypeAnimalValue" asp-for="TypeAnimalId" data-live-search="true" title="Seleccione un tipo de animal." asp-items="@(new SelectList(Model.TypeAnimals,"Id","Description"))"></select>
                                 <label>
                                     <span class="right badge badge-danger " asp-validation-for="TypeAnimalId"></span>
                                 </label>
@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Unidad medida</label>
-                                <select class="form-control select2 " style="width: 100%;" id="UnitMeasurementValue" asp-for="UnitMeasurementId" data-live-search="true" title="Seleccione una unidad." asp-items="@(new SelectList(Model.UnitMeasurements,"Id","Description"))"></select>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="UnitMeasurementValue" asp-for="UnitMeasurementId" data-live-search="true" title="Seleccione una unidad." asp-items="@(new SelectList(Model.UnitMeasurements,"Id","Description"))"></select>
                                 <label>
                                     <span class="right badge badge-danger " asp-validation-for="UnitMeasurementId"></span>
                                 </label>
@@ -145,7 +145,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Observaciones</label>
-                            <input asp-for="Observations" class="form-control" />
+                            <textarea asp-for="Observations" class="form-control" />
                             <label>
                                 <span class="right badge badge-danger " asp-validation-for="Observations"></span>
                             </label>
@@ -189,7 +189,7 @@
     <script>
 $(function () {
             //Initialize Select2 Elements
-            $('.select2').select2()
+    $('.select2bs4').select2()
         });
     </script>
 }

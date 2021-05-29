@@ -37,7 +37,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Cliente</label>
-                            <select class="form-control select2 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
+                            <select class="form-control select2bs4 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
                             <label>
                                 <span class="right badge badge-danger " asp-validation-for="CustomerId"></span>
                             </label>
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Tipo animal</label>
-                            <select class="form-control select2 " style="width: 100%;" id="TypeAnimalValue" asp-for="TypeAnimalId" data-live-search="true" title="Seleccione un tipo de animal." asp-items="@(new SelectList(Model.TypeAnimals,"Id","Description"))"></select>
+                            <select class="form-control select2bs4 " style="width: 100%;" id="TypeAnimalValue" asp-for="TypeAnimalId" data-live-search="true" title="Seleccione un tipo de animal." asp-items="@(new SelectList(Model.TypeAnimals,"Id","Description"))"></select>
                             <label>
                                 <span class="right badge badge-danger " asp-validation-for="TypeAnimalId"></span>
                             </label>
@@ -106,7 +106,7 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label>Unidad medida</label>
-                            <select class="form-control select2 " style="width: 100%;" id="UnitMeasurementValue" asp-for="UnitMeasurementId" data-live-search="true" title="Seleccione una unidad." asp-items="@(new SelectList(Model.UnitMeasurements,"Id","Description"))"></select>
+                            <select class="form-control select2bs4" style="width: 100%;" id="UnitMeasurementValue" asp-for="UnitMeasurementId" title="Seleccione una unidad." asp-items="@(new SelectList(Model.UnitMeasurements,"Id","Description"))"></select>
                             <label>
                                 <span class="right badge badge-danger " asp-validation-for="UnitMeasurementId"></span>
                             </label>
@@ -129,11 +129,11 @@
                     <div class="form-group">
                         <label>Ultima visita</label>
 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
+                        <div class="input-group date" id="lastVisit" data-target-input="nearest">
+                            <input asp-for="LastVisit" type="text" class="form-control datetimepicker-input" data-target="#lastVisit">
+                            <div class="input-group-append" data-target="#lastVisit" data-toggle="datetimepicker">
+                                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
-                            <input asp-for="LastVisit" type="text" class="form-control" data-inputmask-alias="datetime" data-inputmask-inputformat="dd/mm/yyyy" data-mask>
                         </div>
                         <label>
                             <span class="right badge badge-danger " asp-validation-for="LastVisit"></span>
@@ -141,23 +141,23 @@
                         <!-- /.input group -->
                     </div>
                 </div>
+          
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Observaciones</label>
+                            @Html.TextAreaFor(m => m.Observations, new { @class = "form-control" })
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="Observations"></span>
+                            </label>
 
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Observaciones</label>
-                        <input asp-for="Observations" class="form-control" />
-                        <label>
-                            <span class="right badge badge-danger " asp-validation-for="Observations"></span>
-                        </label>
-
+                        </div>
                     </div>
-                </div>
 
-            </div>
+                </div>
                 <!-- /.row -->
 
             </div>
-            <!-- /.card-body -->
+             
             <div class="card-footer">
                 <div align="right">
                     <a href="#confirm" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#confirm">Guardar cambios</a>
@@ -187,9 +187,31 @@
 
 @section scripts {
     <script>
-    $(function () {
-            //Initialize Select2 Elements
+        $(function () {
             $('.select2').select2()
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            })
+            //Datemask dd/mm/yyyy
+            $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Datemask2 mm/dd/yyyy
+            $('#datemask2').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+            //Money Euro
+            $('[data-mask]').inputmask()
+
+        //    Date picker
+            $('#lastVisit').datetimepicker({
+                format: 'L'
+            });
+
+            ////$('#lastVisit').datetimepicker({
+            ////    format: 'dd/mm/yyyy',
+            ////    //todayHighlight: true,
+            ////    //autoclose: true,
+            ////    //language: "es"
+            ////});
+
         });
     </script>
 }
