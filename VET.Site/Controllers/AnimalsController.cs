@@ -174,7 +174,7 @@ namespace VET.Site.Controllers
             }
 
             var model = new EditAnimalsViewModel
-            { 
+            {
                 Id = edit.Id,
                 LastVisit = edit.LastVisit,
                 CustomerId = edit.CustomerId,
