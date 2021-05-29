@@ -17,6 +17,8 @@ namespace VET.DataBase.Contexts
 
         public DbSet<TypeAnimal> TypeAnimals { get; set; }
 
+        public DbSet<Customer> Customers { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
