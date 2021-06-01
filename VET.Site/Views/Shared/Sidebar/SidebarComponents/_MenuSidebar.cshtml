@@ -1,0 +1,12 @@
+﻿<!-- Main Sidebar Container -->
+
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+               
+                    @await Component.InvokeAsync("Navigation", new { viewName = "_MenuSiderbarContent", filterName = NamedNavigationFilters.ParentTree, startingNodeKey = "" })
+</ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    

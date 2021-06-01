@@ -1,0 +1,61 @@
+﻿@model NavigationViewModel
+
+@if (Model.HasVisibleChildren(Model.RootNode).Result == true)
+{
+
+   
+
+    <li class="breadcrumb-item">
+        <a href="@Url.Content(Model.RootNode.AdjustUrl(this.Context, this.Url))">
+            Inicio
+        </a>
+    </li>
+
+    @if (Model.CurrentNode != null && (Model.ParentChain.Count > 1 || (Model.TailCrumbs != null && Model.TailCrumbs.Count > 0)))
+    {
+        @foreach (var node in Model.ParentChain)
+        {
+            if (node.EqualsNode(Model.RootNode))
+            {
+                continue;
+            }
+
+            if (node.EqualsNode(Model.CurrentNode))
+            {
+                if (Model.TailCrumbs != null)
+                {
+                    <li class="breadcrumb-item">
+                        <a  href="@Url.Content(node.AdjustUrl(this.Context, this.Url))">
+                            @node.Value.Title
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    <li class="breadcrumb-item ">
+                        <span>@node.Value.Title</span>
+                    </li>
+                }
+            }
+            else
+            {
+                <li class="breadcrumb-item ">
+                    <a href="@Url.Content(node.AdjustUrl(this.Context, this.Url))">
+                        <i class="@node.Value.IconCssClass"></i>
+                        <span>@node.Value.Title</span>
+                    </a>
+                </li>
+            }
+        }
+        @if (Model.TailCrumbs != null)
+        {
+            foreach (var n in Model.TailCrumbs)
+            {
+                <li class="breadcrumb-item">
+                    <i class="@n.IconCssClass"></i>
+                    <span>@n.Title</span>
+                </li>
+            }
+        }
+    }
+}

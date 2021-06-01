@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<NavNode key="IndexMapping"
+		area=""
+		controller="Home"
+		action="Index"
+		componentVisibility="breadcrumbs,childtree,parenttree"
+		text="Inicio">
+  <Children>
+    <NavNode key="AdminGrouping"
+				area =""
+				controller="Home"
+				action="Index"
+      url=""
+				preservedRouteParameters=""
+				iconCssClass="fas fa-cogs"
+               authorizationPolicy="RequireAdminRole"
+				title="Configuración">
+             <Children>
+                  <NavNode key="AdminMante"
+                      preservedRouteParameters=""
+                      iconCssClass="fas fa-briefcase"
+                             authorizationPolicy="RequireAdminRole"
+                      title="Mantenimientos">
+                      <Children>
+                        <NavNode key="TypeAnimalMante"
+                         controller="TypeAnimal"
+                          action="Index"
+                          preservedRouteParameters=""
+                          iconCssClass="fas fa-dog"
+                          title="Tipos de Animales">
+                          <Children>
+                            <NavNode key="CreateTypeAnimal"
+                                area =""
+                                controller="TypeAnimal"
+                                action="Create"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                componentVisibility="breadcrumbs"
+                                title="Crear tipo de animal">
+                            </NavNode>
+                            <NavNode key="EditTypeAnimal"
+                                area =""
+                                controller="TypeAnimal"
+                                action="Edit"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Editar tipo de animal">
+                            </NavNode>
+                          </Children>
+                        </NavNode>
+                        <NavNode key="AnimalMante"
+                                               controller="Animals"
+                                                action="Index"
+                                                preservedRouteParameters=""
+                                                iconCssClass="fas fa-dog"
+                                                title="Animales">
+                          <Children>
+                            <NavNode key="CreateAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Create"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                componentVisibility="breadcrumbs"
+                                title="Crear animal">
+                            </NavNode>
+                            <NavNode key="EditAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Edit"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Editar animal">
+                            </NavNode>
+                            <NavNode key="DetailAnimal"
+                                area =""
+                                controller="Animals"
+                                action="Detail"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Detalle del animal">
+                            </NavNode>
+                          </Children>
+                        </NavNode>
+                        <NavNode key="CustomerMante"
+                                                 controller="Customer"
+                                                  action="Index"
+                                                  preservedRouteParameters=""
+                                                  iconCssClass="fas fa-users"
+                                                  title="Clientes">
+                          <Children>
+                            <NavNode key="CreateCustomer"
+                        area =""
+                        controller="Customer"
+                        action="Create"
+                        preservedRouteParameters=""
+                        iconCssClass=""
+                        componentVisibility="breadcrumbs"
+                        title="Crear cliente">
+                            </NavNode>
+                            <NavNode key="EditCustomer"
+                                area =""
+                                controller="Customer"
+                                action="Edit"
+                                preservedRouteParameters=""
+                                iconCssClass=""
+                                authorizationPolicy=""
+                                componentVisibility="breadcrumbs"
+                                title="Editar cliente">
+                            </NavNode>
+                          </Children>
+                        </NavNode>
+                      </Children>
+                  </NavNode>
+             </Children>
+    </NavNode>
+  </Children>
+</NavNode>

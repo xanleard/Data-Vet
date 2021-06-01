@@ -1,0 +1,128 @@
+﻿@model IEnumerable<VET.Site.Models.Customers.IndexCustomersViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Clientes</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <div class="row clearfix">
+                    <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                        <a asp-action="Create" asp-controller="Customer" data-loader="true" class="btn btn-primary waves-effect waves-light">Crear</a>
+                    </div>
+                </div>
+                <br />
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th hidden>Id</th>
+                            <th>Nombre</th>
+                            <th>Cedula</th>
+                            <th>Fecha nacimiento</th>
+                            <th>Direccion</th>
+                            <th>Telefono 1</th>
+                            <th>Telefono 2</th>
+                            <th>Correo</th>
+                            <th hidden>Fecha creacion</th>
+                            <th hidden>Fecha de actualizacion</th>
+                            <th>Opciones</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                        <tr>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdentificationCard)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.BirthDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Direction)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telephone1)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Telephone2)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.CreationDate)
+                            </td>
+                            <td hidden>
+                                @Html.DisplayFor(modelItem => item.UpdateDate)
+                            </td>
+                            
+                            <td>
+
+                                <a asp-action="Edit" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar Cliente" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+
+                                <a href="#confirm_@item.Id" data-tooltip="tooltip" data-placement="top" title="Eliminar cliente" class="btn btn-xs btn-table btn-circle waves-effect waves-red waves-circle" data-toggle="modal" data-target="#confirm_@item.Id">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+
+
+
+                                <form asp-action="Delete" asp-route-id="@item.Id">
+                                    <div class="modal fade" id="confirm_@item.Id" tabindex="-1" role="dialog">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="defaultModalLabel">Eliminar cliente</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    ¿Está seguro de querer eliminar el cliente?
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" value="Eliminar" data-loader="true" class="btn btn-danger waves-effect" />
+                                                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                        }
+
+                    </tbody>                   
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section scripts {
+    <script>
+    $(function () {
+            $("#example1").DataTable({
+                "language": {
+                    "url": "plugins/datatables/Spanish.json"
+                }
+            }
+            );
+        });
+    </script>
+}
