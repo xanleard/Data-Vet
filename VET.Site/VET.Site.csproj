@@ -28,6 +28,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VET.Core\VET.Core.csproj" />
+    <ProjectReference Include="..\VET.Database.Migrations.SqlServer.Migrations\VET.Database.Migrations.SqlServer.Migrations.csproj" />
     <ProjectReference Include="..\VET.DataBase.Seed\VET.DataBase.Seed.csproj" />
     <ProjectReference Include="..\VET.DataBase\VET.DataBase.csproj" />
   </ItemGroup>

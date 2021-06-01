@@ -10,7 +10,7 @@
             <h3 class="card-title">Crear Cliente.</h3>
 
             <div class="card-tools">
-        
+
 
                 <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
                 <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
@@ -51,14 +51,21 @@
                             </label>
 
                         </div>
+
                         <div class="form-group">
                             <label>Fecha de Cumpleaños</label>
-                            <input asp-for="BirthDate" class="form-control" />
-                            <label>
-                                <span class="right badge badge-danger " asp-validation-for="BirthDate"></span>
-                            </label>
 
+                            <div class="input-group date" id="birthDate" data-target-input="nearest">
+                                <input asp-for="BirthDate" type="text" data-date-format="mm/dd/yy" class="form-control datetimepicker-input" data-target="#birthDate">
+                                <div class="input-group-append" data-target="#birthDate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="BirthDate"></span>
+                                </label>
+                            </div>
                         </div>
+                      
                         <div class="form-group">
                             <label>Direccion</label>
                             <input asp-for="Direction" class="form-control" />
@@ -91,23 +98,35 @@
                             </label>
 
                         </div>
-                        <div class="form-group">
-                            <label>Fecha de creacion</label>
-                            <input asp-for="CreationDate" class="form-control" />
-                            <label>
-                                <span class="right badge badge-danger " asp-validation-for="CreationDate"></span>
-                            </label>
 
+                        <div class="form-group">
+                            <label>Fecha de creación</label>
+
+                            <div class="input-group date" id="creationDate" data-target-input="nearest">
+                                <input asp-for="CreationDate" type="text" data-date-format="mm/dd/yy" class="form-control datetimepicker-input" data-target="#creationDate">
+                                <div class="input-group-append" data-target="#creationDate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="CreationDate"></span>
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label>Fecha de actualizacion</label>
-                            <input asp-for="UpdateDate" class="form-control" />
-                            <label>
-                                <span class="right badge badge-danger " asp-validation-for="UpdateDate"></span>
-                            </label>
+                            <label>Fecha de actualización</label>
 
+                            <div class="input-group date" id="updateDate" data-target-input="nearest">
+                                <input asp-for="UpdateDate" type="text" data-date-format="mm/dd/yy" class="form-control datetimepicker-input" data-target="#updateDate">
+                                <div class="input-group-append" data-target="#updateDate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="UpdateDate"></span>
+                                </label>
+                            </div>
                         </div>
-                        
+
+
 
                         <!-- /.form-group -->
                     </div>
@@ -139,8 +158,35 @@
                 </div>
 
             </div>
-            </form>
+        </form>
     </div>
     <!-- /.card -->
 </div>
+@section scripts {
+    <script>
+        $(function () {
+
+        //    Date picker
+            $('#creationDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            $('#updateDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            $('#birthDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            
+        });
+    </script>
+}
 

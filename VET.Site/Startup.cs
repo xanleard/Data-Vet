@@ -39,7 +39,7 @@ namespace VET.Site
             services.AddCloudscribeNavigation(Configuration.GetSection("NavigationOptions"));
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("VET.Database.Migrations.SqlServer.Migrations")).EnableSensitiveDataLogging(true).EnableDetailedErrors(true);
                 options.EnableSensitiveDataLogging(true);
                 options.EnableDetailedErrors(true);
             });

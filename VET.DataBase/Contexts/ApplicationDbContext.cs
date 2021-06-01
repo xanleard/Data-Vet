@@ -17,6 +17,8 @@ namespace VET.DataBase.Contexts
 
         public DbSet<TypeAnimal> TypeAnimals { get; set; }
 
+        public DbSet<Appointment> Appointments { get; set; }
+
         public DbSet<Customer> Customers { get; set; }
 
         public DbSet<Sex> Sexes { get; set; }

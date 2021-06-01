@@ -13,7 +13,7 @@ namespace VET.DataBase.Models
 
         public string Name { get; set; }
 
-        public string IdentificationCard { get; set; }
+        public int Age { get; set; }
 
         public string Race { get; set; }
 
