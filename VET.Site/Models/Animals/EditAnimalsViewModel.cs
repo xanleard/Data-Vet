@@ -17,7 +17,7 @@ namespace VET.Site.Models.Animals
         public string Name { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
-        public string IdentificationCard { get; set; }
+        public int Age { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio.")]
         public string Race { get; set; }

@@ -17,6 +17,8 @@ namespace VET.Site.Models.Customers
         [StringLength(20, ErrorMessage = "La longitud del campo debe ser menor a 20 caracteres")]
         public string IdentificationCard { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         [Required(ErrorMessage = "El campo es obligatorio")]
@@ -32,8 +34,12 @@ namespace VET.Site.Models.Customers
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string Email { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreationDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime UpdateDate { get; set; }
     }
 }
