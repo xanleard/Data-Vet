@@ -31,9 +31,5 @@ namespace VET.Site.Models.Customers
 
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string Email { get; set; }
-
-        public DateTime CreationDate { get; set; }
-
-        public DateTime UpdateDate { get; set; }
     }
 }
