@@ -44,23 +44,12 @@ namespace VET.Site
                 options.EnableDetailedErrors(true);
             });
 
-            services.AddDbContext<ApplicationUserDbContext>(options =>
-            {
-                options.UseSqlServer(this.Configuration.GetConnectionString("IdentityUserConnection"));
-                options.EnableSensitiveDataLogging(true);
-                options.EnableDetailedErrors(true);
-            });
-
             services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationUserDbContext>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
             services.AddScoped<IUserCreationService, UserCreationService>();
-
-            // Build the IoC from the service collection
-            var provider = services.BuildServiceProvider();
-            var userService = provider.GetService<IUserCreationService>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -80,7 +69,6 @@ namespace VET.Site
                 options.User.RequireUniqueEmail = false;
             });
 
-            userService.CreateUser().GetAwaiter().GetResult();
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
