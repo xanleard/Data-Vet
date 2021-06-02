@@ -15,5 +15,7 @@ namespace VET.DataBase.Models
         public string NoteFirst { get; set; }
 
         public string NoteSeconds { get; set; }
+
+        public string NoteThird { get; set; }
     }
 }

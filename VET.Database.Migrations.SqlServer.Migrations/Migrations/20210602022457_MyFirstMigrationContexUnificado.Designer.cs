@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VET.DataBase.Contexts;
 
 namespace VET.Database.Migrations.SqlServer.Migrations.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210602022457_MyFirstMigrationContexUnificado")]
+    partial class MyFirstMigrationContexUnificado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -285,9 +287,6 @@ namespace VET.Database.Migrations.SqlServer.Migrations.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("NoteSeconds")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("NoteThird")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("VisitDetail")
