@@ -175,7 +175,7 @@ namespace VET.Site.Controllers
 
             var model = new EditAnimalsViewModel
             {
-                Id = edit.Id,
+                IdModel = edit.Id,
                 LastVisit = edit.LastVisit,
                 CustomerId = edit.CustomerId,
                 Age = edit.Age,
@@ -241,7 +241,7 @@ namespace VET.Site.Controllers
                 return this.NotFound();
             }
 
-            var animalToEdit = await this.animalsManager.FindByIdAsync(editModel.Id);
+            var animalToEdit = await this.animalsManager.FindByIdAsync(editModel.IdModel);
 
             if (animalToEdit == null)
             {

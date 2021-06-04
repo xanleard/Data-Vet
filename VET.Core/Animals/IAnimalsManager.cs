@@ -20,5 +20,7 @@ namespace VET.Core.Animals
         Task<Animal> FindByIdAsync(int id);
 
         Task<IEnumerable<Animal>> GetAllAsync();
+
+        Task<IEnumerable<Animal>> GetAllCustomerAsync(int id);
     }
 }
