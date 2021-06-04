@@ -50,44 +50,6 @@
                             </NavNode>
                           </Children>
                         </NavNode>
-                        <NavNode key="AnimalMante"
-                                               controller="Animals"
-                                                action="Index"
-                                                preservedRouteParameters=""
-                                                iconCssClass="fas fa-dog"
-                                                title="Animales">
-                          <Children>
-                            <NavNode key="CreateAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Create"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                componentVisibility="breadcrumbs"
-                                title="Crear animal">
-                            </NavNode>
-                            <NavNode key="EditAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Edit"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                authorizationPolicy=""
-                                componentVisibility="breadcrumbs"
-                                title="Editar animal">
-                            </NavNode>
-                            <NavNode key="DetailAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Detail"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                authorizationPolicy=""
-                                componentVisibility="breadcrumbs"
-                                title="Detalle del animal">
-                            </NavNode>
-                          </Children>
-                        </NavNode>
                         <NavNode key="CustomerMante"
                                                  controller="Customer"
                                                   action="Index"
@@ -114,6 +76,48 @@
                                 componentVisibility="breadcrumbs"
                                 title="Editar cliente">
                             </NavNode>
+                            <NavNode key="DetailCustomer"
+                               area =""
+                               controller="Customer"
+                               action="Detail"
+                               preservedRouteParameters=""
+                               iconCssClass=""
+                               authorizationPolicy=""
+                               componentVisibility="breadcrumbs"
+                               title="Detalle cliente">
+                            <Children>
+                              <NavNode key="CreateAnimals"
+                              area =""
+                              controller="Customer"
+                              action="CreateAnimal"
+                              preservedRouteParameters=""
+                              iconCssClass=""
+                              componentVisibility="breadcrumbs"
+                              title="Crear animal">
+                              </NavNode>
+                              <NavNode key="EditAnimals"
+                                  area =""
+                                  controller="Customer"
+                                  action="EditAnimal"
+                                  preservedRouteParameters=""
+                                  iconCssClass=""
+                                  authorizationPolicy=""
+                                  componentVisibility="breadcrumbs"
+                                  title="Editar animal">
+                              </NavNode>
+                              <NavNode key="DetailAnimals"
+                                  area =""
+                                  controller="Customer"
+                                  action="DetailAnimal"
+                                  preservedRouteParameters=""
+                                  iconCssClass=""
+                                  authorizationPolicy=""
+                                  componentVisibility="breadcrumbs"
+                                  title="Detalle del animal">
+                              </NavNode>
+
+                            </Children>
+                          </NavNode>
                           </Children>
                         </NavNode>
                       </Children>
