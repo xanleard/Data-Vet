@@ -42,7 +42,7 @@ namespace VET.Site.Controllers
             {
                 Id = d.Id,
                 CustomerName = d.Customers.Name,
-                TypeAnimalName = d.Animals.TypeAnimals.Description,
+                TypeAnimalName = d.Animals.Name,
                 DateVisit = d.DateVisit,
                 IsComplet = d.IsComplet,
                 NoteFirst = d.NoteFirst,
@@ -250,7 +250,7 @@ namespace VET.Site.Controllers
             {
                 Id = visit.Id,
                 CustomerName = visit.Customers.Name,
-                TypeAnimalName = visit.Animals.TypeAnimals.Description,
+                TypeAnimalName = visit.Animals.Name,
                 DateVisit = visit.DateVisit,
                 IsComplet = visit.IsComplet,
                 NoteFirst = visit.NoteFirst,
