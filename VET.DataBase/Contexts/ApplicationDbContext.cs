@@ -56,6 +56,18 @@ namespace VET.DataBase.Contexts
            .WithMany()
            .HasForeignKey(c => c.UnitMeasurementId)
            .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Appointment>()
+           .HasOne(c => c.Customers)
+           .WithMany()
+           .HasForeignKey(c => c.CustomerId)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Appointment>()
+           .HasOne(c => c.Animals)
+           .WithMany()
+           .HasForeignKey(c => c.AnimalId)
+           .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
