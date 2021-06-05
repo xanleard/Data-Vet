@@ -46,15 +46,15 @@
              
                 <td>
 
-                    <a asp-action="Edit" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                    <a asp-action="Edit" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar cita" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
                         <i class="fas fa-edit"></i>
                     </a>
 
-                    <a href="#confirm_@item.Id" data-tooltip="tooltip" data-placement="top" title="Eliminar el animal" class="btn btn-xs btn-table btn-circle waves-effect waves-red waves-circle" data-toggle="modal" data-target="#confirm_@item.Id">
+                    <a href="#confirm_@item.Id" data-tooltip="tooltip" data-placement="top" title="Eliminar el cita" class="btn btn-xs btn-table btn-circle waves-effect waves-red waves-circle" data-toggle="modal" data-target="#confirm_@item.Id">
                         <i class="fas fa-trash-alt"></i>
                     </a>
 
-                    <a asp-action="Detail" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                    <a asp-action="Detail" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del cita" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
                         <i class="fas fa-arrow-right"></i>
                     </a>
 
@@ -82,15 +82,7 @@
             }
 
                     </tbody>
-                    <tfoot>
-                        <tr>
-                            <th>Cliente</th>
-                            <th>Causa</th>
-                            <th>Fecha</th>
-                            <th>Animal</th>
-                            <th>Opciones</th>
-                        </tr>
-                    </tfoot>
+                   
                 </table>
             </div>
             <!-- /.card-body -->

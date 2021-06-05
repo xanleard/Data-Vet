@@ -92,8 +92,6 @@ namespace VET.Site.Controllers
                 Telephone1 = createModel.Telephone1,
                 Telephone2 = createModel.Telephone2,
                 Email = createModel.Email,
-                CreationDate = createModel.CreationDate,
-                UpdateDate = createModel.UpdateDate,
             };
 
             var result = await this.customersManager.CreateAsync(newcustome);
@@ -154,6 +152,7 @@ namespace VET.Site.Controllers
             {
                 return this.NotFound();
             }
+
             customerToEdit.Name = editModel.Name;
             customerToEdit.IdentificationCard = editModel.IdentificationCard;
             customerToEdit.BirthDate = editModel.BirthDate;
@@ -161,8 +160,6 @@ namespace VET.Site.Controllers
             customerToEdit.Telephone1 = editModel.Telephone1;
             customerToEdit.Telephone2 = editModel.Telephone2;
             customerToEdit.Email = editModel.Email;
-            customerToEdit.CreationDate = editModel.CreationDate;
-            customerToEdit.UpdateDate = editModel.UpdateDate;
             var editResult = await this.customersManager.EditAsync(customerToEdit);
 
             if (!editResult.Succeeded)
@@ -206,8 +203,6 @@ namespace VET.Site.Controllers
                 Telephone1 = editList.Telephone1,
                 Telephone2 = editList.Telephone2,
                 Email = editList.Email,
-                CreationDate = editList.CreationDate,
-                UpdateDate = editList.UpdateDate,
             };
 
             return this.View(list);

@@ -28,6 +28,7 @@ namespace VET.Core.Customers
                 return Task.FromResult(new OperationResult(false));
             }
 
+            customer.CreationDate = DateTime.Now;
             return this.InnerCreateAsync(customer);
         }
 
@@ -48,6 +49,7 @@ namespace VET.Core.Customers
                 return Task.FromResult(new OperationResult(false));
             }
 
+            customer.UpdateDate = DateTime.Now;
             return this.InnerEditAsync(customer);
         }
 

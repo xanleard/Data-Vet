@@ -4,6 +4,7 @@
 
 namespace VET.Core.Appointments
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
@@ -41,7 +42,7 @@ namespace VET.Core.Appointments
 
         public async Task<IEnumerable<Appointment>> GetAllAsync()
         {
-            return await this.appointmentRepository.All()
+            return await this.appointmentRepository.All().OrderBy(c => c.DateVisit >= DateTime.Now.AddDays(-1) && c.IsComplet == true)
                              .Include(i => i.Customers)
                              .Include(i => i.Animals)
                              .ThenInclude(i => i.TypeAnimals)

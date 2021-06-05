@@ -21,7 +21,7 @@
                          controller="TypeAnimal"
                           action="Index"
                           preservedRouteParameters=""
-                          iconCssClass="fas fa-dog"
+                          iconCssClass="fas fa-paw"
                           title="Tipos de Animales">
                           <Children>
                             <NavNode key="CreateTypeAnimal"

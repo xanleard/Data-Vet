@@ -34,12 +34,5 @@ namespace VET.Site.Models.Customers
         [Required(ErrorMessage = "El campo es obligatorio")]
         public string Email { get; set; }
 
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime CreationDate { get; set; }
-
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
-        public DateTime UpdateDate { get; set; }
     }
 }
