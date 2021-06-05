@@ -1,0 +1,164 @@
+﻿@model VET.Site.Models.Customers.CreateCustomersViewModel
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Crear Cliente.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <form method="post">
+            <div class="card-body">
+
+
+                @if (ViewData.ModelState[string.Empty]?.Errors?.Any() == true)
+                {
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="body bg-red">
+                                <div asp-validation-summary="ModelOnly"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input asp-for="Name" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger" asp-validation-for="Name"></span>
+                            </label>
+
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Cedula</label>
+                            <input asp-for="IdentificationCard" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="IdentificationCard"></span>
+                            </label>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Fecha de Cumpleaños</label>
+
+                            <div class="input-group date" id="birthDate" data-target-input="nearest">
+                                <input asp-for="BirthDate" type="text" data-date-format="mm/dd/yy" class="form-control datetimepicker-input" data-target="#birthDate">
+                                <div class="input-group-append" data-target="#birthDate" data-toggle="datetimepicker">
+                                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                </div>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="BirthDate"></span>
+                                </label>
+                            </div>
+                        </div>
+                      
+                        <div class="form-group">
+                            <label>Direccion</label>
+                            <input asp-for="Direction" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="Direction"></span>
+                            </label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Telefono 1</label>
+                            <input asp-for="Telephone1" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="Telephone1"></span>
+                            </label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Telefono 2</label>
+                            <input asp-for="Telephone2" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="Telephone2"></span>
+                            </label>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Correo</label>
+                            <input asp-for="Email" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="Email"></span>
+                            </label>
+
+                        </div>
+                        
+
+                        <!-- /.form-group -->
+                    </div>
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <div align="right">
+                    <a href="#confirm" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#confirm">Guardar cambios</a>
+                </div>
+                <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="defaultModalLabel">Crear cliente</h4>
+                            </div>
+                            <div class="modal-body">
+                                ¿Desea crear el cliente?
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" id="submitbutton" value="Guardar cambios" data-disableonclick="true" class="btn btn-primary waves-effect" />
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- /.card -->
+</div>
+@section scripts {
+    <script>
+        $(function () {
+
+        //    Date picker
+            $('#creationDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            $('#updateDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            $('#birthDate').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+            
+        });
+    </script>
+}
+

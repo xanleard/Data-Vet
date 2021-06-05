@@ -1,0 +1,115 @@
+﻿@model IEnumerable<VET.Site.Models.Visits.IndexVisitViewModel>
+@{ ViewData["Title"] = "Index"; }
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Visitas</h3>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+
+                <div class="row clearfix">
+                    <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                        <a asp-action="Create" asp-controller="Visits" data-loader="true" class="btn btn-primary waves-effect waves-light">Crear</a>
+                    </div>
+                </div>
+                <br />
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Causa</th>
+                            <th>Fecha</th>
+                            <th>Animal</th>
+                            <th>Opciones</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VisitDetail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateVisit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TypeAnimalName)
+                </td>
+             
+                <td>
+
+                    <a asp-action="Edit" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar cita" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <a href="#confirm_@item.Id" data-tooltip="tooltip" data-placement="top" title="Eliminar el cita" class="btn btn-xs btn-table btn-circle waves-effect waves-red waves-circle" data-toggle="modal" data-target="#confirm_@item.Id">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+
+                    <a asp-action="Detail" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del cita" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+
+                    <form asp-action="Delete" asp-route-id="@item.Id">
+                        <div class="modal fade" id="confirm_@item.Id" tabindex="-1" role="dialog">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4 class="modal-title" id="defaultModalLabel">Eliminar Visita</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        ¿Está seguro de querer eliminar visita?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <input type="submit" value="Eliminar" data-loader="true" class="btn btn-danger waves-effect" />
+                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </td>
+            </tr>
+            }
+
+                    </tbody>
+                   
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+<!-- /.row -->
+@section scripts {
+    <script>
+
+        $(function () {
+            $("#example1").DataTable({
+                "language": {
+                    "url": "/Spanish.json"
+                },
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+           
+        });
+    </script>
+}

@@ -1,0 +1,88 @@
+﻿@model VET.Site.Models.TypeAnimals.CreateTypeAnimalsViewModel
+@{
+    ViewData["Title"] = "Crear";
+}
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Crear tipo de animal.</h3>
+
+            <div class="card-tools">
+        
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <form method="post">
+            <div class="card-body">
+
+
+                @if (ViewData.ModelState[string.Empty]?.Errors?.Any() == true)
+                {
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="card">
+                            <div class="body bg-red">
+                                <div asp-validation-summary="ModelOnly"></div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Nombre</label>
+                            <input asp-for="Name" class="form-control" />
+                            <label>
+                                <span class="right badge badge-danger" asp-validation-for="Name"></span>
+                            </label>
+
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <label>Descripción</label>
+                            <input asp-for="Description" class="form-control" />
+                            <label >
+                                <span class="right badge badge-danger " asp-validation-for="Description"></span>
+                            </label>
+
+                        </div>
+                        <!-- /.form-group -->
+                    </div>
+
+                </div>
+                <!-- /.row -->
+
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                <div align="right">
+                    <a href="#confirm" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#confirm">Guardar cambios</a>
+                </div>
+                <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="defaultModalLabel">Crear tipo de animal</h4>
+                            </div>
+                            <div class="modal-body">
+                                ¿Desea crear el tipo de animal?
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" id="submitbutton" value="Guardar cambios" data-disableonclick="true" class="btn btn-primary waves-effect" />
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </form>
+    </div>
+    <!-- /.card -->
+</div>
+

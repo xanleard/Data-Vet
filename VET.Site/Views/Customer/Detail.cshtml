@@ -1,0 +1,219 @@
+﻿@model VET.Site.Models.Customers.DetailCustomersViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Detalle Cliente.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Cedula:</label>
+                        @Html.DisplayFor(model => model.IdentificationCard)
+                </div>
+
+                <div class="col-md-6">
+                        <label>Nombre:</label>
+                        @Html.DisplayFor(model => model.Name)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Telefono 1:</label>
+                    @Html.DisplayFor(model => model.Telephone1)
+                </div>
+
+                <div class="col-md-6">
+                        <label>Telefono 2:</label>
+                        @Html.DisplayFor(model => model.Telephone2)
+                </div>
+
+                <div class="col-md-6">
+                        <label>Email:</label>
+                        @Html.DisplayFor(model => model.Email)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Direccion:</label>
+                        @Html.DisplayFor(model => model.Direction)
+                    </div>
+                </div>
+
+
+                <div class="col-md-6">
+                    <label>Fecha de Cumpleaños:</label>
+                        @Html.DisplayFor(model => model.BirthDate)
+                </div>
+
+            
+                <div class="col-md-6">
+                    <label>Fecha creación:</label>
+                        @Html.DisplayFor(model => model.CreationDate)
+                </div>
+                <div class="col-md-6">
+                    <label>Fecha actualización:</label>
+                        @Html.DisplayFor(model => model.UpdateDate)
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+    </div>
+    <!-- /.card -->
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Animales.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+
+
+                        <div class="row clearfix">
+                            <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
+                                <a asp-action="CreateAnimal" asp-route-id="@Model.Id" asp-controller="Customer" data-loader="true" class="btn btn-primary waves-effect waves-light">Crear</a>
+                            </div>
+                        </div>
+                        <br />
+                        <table id="example1" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Cliente</th>
+                                    <th>Nombre</th>
+                                    <th>Raza</th>
+                                    <th>Sexo</th>
+                                    <th>Animal</th>
+                                    <th>Peso</th>
+                                    <th>Ultima visita</th>
+                                    <th>Opciones</th>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Animals)
+                                {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.CustomerName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Race)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.SexName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TypeAnimalName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.UnitMeasurementName)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.LastVisit)
+                                </td>
+                                <td>
+
+                                    <a asp-action="EditAnimal" asp-controller="Customer" asp-route-animalId="@item.Id" asp-route-id="@Model.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+
+                                    <a href="#confirm_@item.Id" data-tooltip="tooltip" data-placement="top" title="Eliminar el animal" class="btn btn-xs btn-table btn-circle waves-effect waves-red waves-circle" data-toggle="modal" data-target="#confirm_@item.Id">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </a>
+
+                                    <a asp-action="DetailAnimal" asp-controller="Customer" asp-route-animalId="@item.Id" asp-route-id="@Model.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                                        <i class="fas fa-arrow-right"></i>
+                                    </a>
+
+
+                                    <form asp-action="DeleteAnimal" asp-controller="Customer" asp-route-animalId="@item.Id" asp-route-id="@Model.Id">
+                                        <div class="modal fade" id="confirm_@item.Id" tabindex="-1" role="dialog">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="defaultModalLabel">Eliminar Animal</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        ¿Está seguro de querer eliminar el animal?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <input type="submit" value="Eliminar" data-loader="true" class="btn btn-danger waves-effect" />
+                                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>}
+
+                            </tbody>
+                            
+                        </table>
+
+                    </div>
+                </div>
+                    </div>
+
+
+                    <!-- /.row -->
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+
+                </div>
+            </div>
+@section scripts {
+    <script>
+        $(function () {
+            $("#example1").DataTable({
+                "language": {
+                    "url": "/Spanish.json"
+                },
+                "paging": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "responsive": true,
+                "lengthChange": false,
+                "autoWidth": false,
+                "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        });
+    </script>
+}
