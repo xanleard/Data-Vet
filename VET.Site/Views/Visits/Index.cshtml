@@ -1,18 +1,18 @@
-﻿@model IEnumerable<VET.Site.Models.Animals.IndexAnimalsViewModel>
+﻿@model IEnumerable<VET.Site.Models.Visits.IndexVisitViewModel>
 @{ ViewData["Title"] = "Index"; }
 
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Animales</h3>
+                <h3 class="card-title">Visitas</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
 
                 <div class="row clearfix">
                     <div class="col-xs-6 col-sm-3 col-md-2 col-lg-2">
-                        <a asp-action="Create" asp-controller="Animals" data-loader="true" class="btn btn-primary waves-effect waves-light">Crear</a>
+                        <a asp-action="Create" asp-controller="Visits" data-loader="true" class="btn btn-primary waves-effect waves-light">Crear</a>
                     </div>
                 </div>
                 <br />
@@ -20,12 +20,9 @@
                     <thead>
                         <tr>
                             <th>Cliente</th>
-                            <th>Nombre</th>
-                            <th>Raza</th>
-                            <th>Sexo</th>
+                            <th>Causa</th>
+                            <th>Fecha</th>
                             <th>Animal</th>
-                            <th>Peso</th>
-                            <th>Ultima visita</th>
                             <th>Opciones</th>
                         </tr>
 
@@ -38,26 +35,18 @@
                     @Html.DisplayFor(modelItem => item.CustomerName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => item.VisitDetail)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Race)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SexName)
+                    @Html.DisplayFor(modelItem => item.DateVisit)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.TypeAnimalName)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UnitMeasurementName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastVisit)
-                </td>
+             
                 <td>
 
-                    <a asp-action="Edit" asp-controller="Animals" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                    <a asp-action="Edit" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Editar animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
                         <i class="fas fa-edit"></i>
                     </a>
 
@@ -65,7 +54,7 @@
                         <i class="fas fa-trash-alt"></i>
                     </a>
 
-                    <a asp-action="Detail" asp-controller="Animals" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
+                    <a asp-action="Detail" asp-controller="Visits" asp-route-id="@item.Id" data-loader="true" data-tooltip="tooltip" data-placement="top" title="Detalle del animal" class="btn btn-xs btn-table btn-circle waves-effect waves-light waves-circle">
                         <i class="fas fa-arrow-right"></i>
                     </a>
 
@@ -75,10 +64,10 @@
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="defaultModalLabel">Eliminar Animal</h4>
+                                        <h4 class="modal-title" id="defaultModalLabel">Eliminar Visita</h4>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Está seguro de querer eliminar el animal?
+                                        ¿Está seguro de querer eliminar visita?
                                     </div>
                                     <div class="modal-footer">
                                         <input type="submit" value="Eliminar" data-loader="true" class="btn btn-danger waves-effect" />
@@ -93,7 +82,15 @@
             }
 
                     </tbody>
-                   
+                    <tfoot>
+                        <tr>
+                            <th>Cliente</th>
+                            <th>Causa</th>
+                            <th>Fecha</th>
+                            <th>Animal</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </tfoot>
                 </table>
             </div>
             <!-- /.card-body -->
@@ -109,7 +106,7 @@
         $(function () {
             $("#example1").DataTable({
                 "language": {
-                    "url": "plugins/datatables/Spanish.json"
+                    "url": "/Spanish.json"
                 },
                 "paging": true,
                 "searching": true,

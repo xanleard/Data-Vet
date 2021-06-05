@@ -6,6 +6,7 @@ namespace VET.Site.Models.Customers
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -17,6 +18,8 @@ namespace VET.Site.Models.Customers
 
         public string IdentificationCard { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime BirthDate { get; set; }
 
         public string Direction { get; set; }
@@ -27,8 +30,12 @@ namespace VET.Site.Models.Customers
 
         public string Email { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime CreationDate { get; set; }
 
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime UpdateDate { get; set; }
     }
 }

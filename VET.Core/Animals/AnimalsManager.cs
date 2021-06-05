@@ -5,6 +5,7 @@
 namespace VET.Core.Animals
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.EntityFrameworkCore;
     using VET.DataBase.Models;
@@ -42,6 +43,16 @@ namespace VET.Core.Animals
         public async Task<IEnumerable<Animal>> GetAllAsync()
         {
             return await this.animalRepository.All()
+                             .Include(i => i.Customers)
+                             .Include(i => i.TypeAnimals)
+                             .Include(i => i.UnitMeasurements)
+                             .Include(i => i.Sexes)
+                             .ToListAsync();
+        }
+
+        public async Task<IEnumerable<Animal>> GetAllCustomerAsync(int id)
+        {
+            return await this.animalRepository.All().Where(c => c.CustomerId == id)
                              .Include(i => i.Customers)
                              .Include(i => i.TypeAnimals)
                              .Include(i => i.UnitMeasurements)

@@ -1,0 +1,59 @@
+﻿@model VET.Site.Models.Visits.IndexVisitViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Detalle visita.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Cliente:</label>
+                    @Html.DisplayFor(model => model.CustomerName)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Animal:</label>
+                    @Html.DisplayFor(model => model.TypeAnimalName)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Causa:</label>
+                    @Html.DisplayFor(model => model.VisitDetail)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Fecha:</label>
+                    @Html.DisplayFor(model => model.DateVisit)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Nota:</label>
+                    @Html.DisplayFor(model => model.NoteFirst)
+                </div>
+            </div>
+            
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+    </div>

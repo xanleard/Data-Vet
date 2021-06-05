@@ -4,10 +4,12 @@
 
 namespace VET.DataBase.Contexts
 {
+    using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using VET.DataBase.Identity;
     using VET.DataBase.Models;
 
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext(
           DbContextOptions<ApplicationDbContext> options)
@@ -16,6 +18,8 @@ namespace VET.DataBase.Contexts
         }
 
         public DbSet<TypeAnimal> TypeAnimals { get; set; }
+
+        public DbSet<Appointment> Appointments { get; set; }
 
         public DbSet<Customer> Customers { get; set; }
 
@@ -51,6 +55,18 @@ namespace VET.DataBase.Contexts
            .HasOne(c => c.UnitMeasurements)
            .WithMany()
            .HasForeignKey(c => c.UnitMeasurementId)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Appointment>()
+           .HasOne(c => c.Customers)
+           .WithMany()
+           .HasForeignKey(c => c.CustomerId)
+           .OnDelete(DeleteBehavior.Restrict);
+
+            builder.Entity<Appointment>()
+           .HasOne(c => c.Animals)
+           .WithMany()
+           .HasForeignKey(c => c.AnimalId)
            .OnDelete(DeleteBehavior.Restrict);
         }
     }

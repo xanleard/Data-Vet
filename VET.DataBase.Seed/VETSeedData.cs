@@ -8,6 +8,7 @@ namespace VET.DataBase.Seed
     using System.Threading.Tasks;
     using Microsoft.Extensions.DependencyInjection;
     using VET.DataBase.Contexts;
+    using VET.DataBase.Identity;
     using VET.DataBase.Models;
 
     public class VETSeedData
@@ -18,6 +19,8 @@ namespace VET.DataBase.Seed
             try
             {
                 databaseCreated = await serviceProvider.GetRequiredService<ApplicationDbContext>().Database.EnsureCreatedAsync();
+                var userService = serviceProvider.GetRequiredService<IUserCreationService>();
+                userService.CreateUser().GetAwaiter().GetResult();
             }
             catch (Exception)
             {

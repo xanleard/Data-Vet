@@ -126,7 +126,7 @@ namespace VET.Site.Controllers
                 DateUpdate = DateTime.Now,
                 CreationDate = DateTime.Now,
                 LastVisit = DateTime.Now,
-                IdentificationCard = createModel.IdentificationCard,
+                Age = createModel.Age,
                 Name = createModel.Name,
                 Race = createModel.Race,
                 Observations = createModel.Observations,
@@ -175,10 +175,10 @@ namespace VET.Site.Controllers
 
             var model = new EditAnimalsViewModel
             {
-                Id = edit.Id,
+                IdModel = edit.Id,
                 LastVisit = edit.LastVisit,
                 CustomerId = edit.CustomerId,
-                IdentificationCard = edit.IdentificationCard,
+                Age = edit.Age,
                 Name = edit.Name,
                 Observations = edit.Observations,
                 Race = edit.Race,
@@ -241,7 +241,7 @@ namespace VET.Site.Controllers
                 return this.NotFound();
             }
 
-            var animalToEdit = await this.animalsManager.FindByIdAsync(editModel.Id);
+            var animalToEdit = await this.animalsManager.FindByIdAsync(editModel.IdModel);
 
             if (animalToEdit == null)
             {
@@ -250,7 +250,7 @@ namespace VET.Site.Controllers
 
             animalToEdit.DateUpdate = DateTime.Now;
             animalToEdit.CustomerId = editModel.CustomerId;
-            animalToEdit.IdentificationCard = editModel.IdentificationCard;
+            animalToEdit.Age = editModel.Age;
             animalToEdit.LastVisit = editModel.LastVisit;
             animalToEdit.Name = editModel.Name;
             animalToEdit.Observations = editModel.Observations;
@@ -318,7 +318,7 @@ namespace VET.Site.Controllers
                 Email = animal.Customers.Email,
                 Telephone1 = animal.Customers.Telephone1,
                 Telephone2 = animal.Customers.Telephone2,
-                IdentificationCard = animal.IdentificationCard,
+                Age = animal.Age,
                 Weight = animal.Weight,
                 Observations = animal.Observations,
                 CreationDate = animal.CreationDate,

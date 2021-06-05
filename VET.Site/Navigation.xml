@@ -16,12 +16,7 @@
                authorizationPolicy="RequireAdminRole"
 				title="Configuración">
              <Children>
-                  <NavNode key="AdminMante"
-                      preservedRouteParameters=""
-                      iconCssClass="fas fa-briefcase"
-                             authorizationPolicy="RequireAdminRole"
-                      title="Mantenimientos">
-                      <Children>
+                  
                         <NavNode key="TypeAnimalMante"
                          controller="TypeAnimal"
                           action="Index"
@@ -50,75 +45,130 @@
                             </NavNode>
                           </Children>
                         </NavNode>
-                        <NavNode key="AnimalMante"
-                                               controller="Animals"
-                                                action="Index"
-                                                preservedRouteParameters=""
-                                                iconCssClass="fas fa-dog"
-                                                title="Animales">
-                          <Children>
-                            <NavNode key="CreateAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Create"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                componentVisibility="breadcrumbs"
-                                title="Crear animal">
-                            </NavNode>
-                            <NavNode key="EditAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Edit"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                authorizationPolicy=""
-                                componentVisibility="breadcrumbs"
-                                title="Editar animal">
-                            </NavNode>
-                            <NavNode key="DetailAnimal"
-                                area =""
-                                controller="Animals"
-                                action="Detail"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                authorizationPolicy=""
-                                componentVisibility="breadcrumbs"
-                                title="Detalle del animal">
-                            </NavNode>
-                          </Children>
-                        </NavNode>
-                        <NavNode key="CustomerMante"
-                                                 controller="Customer"
-                                                  action="Index"
-                                                  preservedRouteParameters=""
-                                                  iconCssClass="fas fa-users"
-                                                  title="Clientes">
-                          <Children>
-                            <NavNode key="CreateCustomer"
-                        area =""
-                        controller="Customer"
-                        action="Create"
-                        preservedRouteParameters=""
-                        iconCssClass=""
-                        componentVisibility="breadcrumbs"
-                        title="Crear cliente">
-                            </NavNode>
-                            <NavNode key="EditCustomer"
-                                area =""
-                                controller="Customer"
-                                action="Edit"
-                                preservedRouteParameters=""
-                                iconCssClass=""
-                                authorizationPolicy=""
-                                componentVisibility="breadcrumbs"
-                                title="Editar cliente">
-                            </NavNode>
-                          </Children>
-                        </NavNode>
-                      </Children>
-                  </NavNode>
+                 
              </Children>
+    </NavNode>
+    <NavNode key="VisitGrouping"
+      area =""
+      controller="Home"
+      action="Index"
+    url=""
+      preservedRouteParameters=""
+      iconCssClass="fas fa-briefcase"
+             authorizationPolicy="RequireAdminRole"
+      title="Gestion de clientes">
+      <Children>
+        <NavNode key="CustomerMante"
+                                            controller="Customer"
+                                             action="Index"
+                                             preservedRouteParameters=""
+                                             iconCssClass="fas fa-users"
+                                             title="Clientes">
+          <Children>
+            <NavNode key="CreateCustomer"
+        area =""
+        controller="Customer"
+        action="Create"
+        preservedRouteParameters=""
+        iconCssClass=""
+        componentVisibility="breadcrumbs"
+        title="Crear cliente">
+            </NavNode>
+            <NavNode key="EditCustomer"
+                area =""
+                controller="Customer"
+                action="Edit"
+                preservedRouteParameters=""
+                iconCssClass=""
+                authorizationPolicy=""
+                componentVisibility="breadcrumbs"
+                title="Editar cliente">
+            </NavNode>
+            <NavNode key="DetailCustomer"
+               area =""
+               controller="Customer"
+               action="Detail"
+               preservedRouteParameters=""
+               iconCssClass=""
+               authorizationPolicy=""
+               componentVisibility="breadcrumbs"
+               title="Detalle cliente">
+              <Children>
+                <NavNode key="CreateAnimals"
+                area =""
+                controller="Customer"
+                action="CreateAnimal"
+                preservedRouteParameters=""
+                iconCssClass=""
+                componentVisibility="breadcrumbs"
+                title="Crear animal">
+                </NavNode>
+                <NavNode key="EditAnimals"
+                    area =""
+                    controller="Customer"
+                    action="EditAnimal"
+                    preservedRouteParameters=""
+                    iconCssClass=""
+                    authorizationPolicy=""
+                    componentVisibility="breadcrumbs"
+                    title="Editar animal">
+                </NavNode>
+                <NavNode key="DetailAnimals"
+                    area =""
+                    controller="Customer"
+                    action="DetailAnimal"
+                    preservedRouteParameters=""
+                    iconCssClass=""
+                    authorizationPolicy=""
+                    componentVisibility="breadcrumbs"
+                    title="Detalle del animal">
+                </NavNode>
+
+              </Children>
+            </NavNode>
+          </Children>
+        </NavNode>
+
+        <NavNode key="VisitMante"
+             controller="Visits"
+              action="Index"
+              authorizationPolicy="RequireAdminRole"
+              preservedRouteParameters=""
+              iconCssClass="fas fa-eye"
+              title="Visita">
+      <Children>
+        <NavNode key="CreateVisit"
+            area =""
+            controller="Visits"
+            action="Create"
+            preservedRouteParameters=""
+            iconCssClass=""
+            componentVisibility="breadcrumbs"
+            title="Crear visita">
+        </NavNode>
+        <NavNode key="EditVisit"
+            area =""
+            controller="Visits"
+            action="Edit"
+            preservedRouteParameters=""
+            iconCssClass=""
+            authorizationPolicy=""
+            componentVisibility="breadcrumbs"
+            title="Editar visita">
+        </NavNode>
+        <NavNode key="DetailVisit"
+           area =""
+           controller="Visits"
+           action="Detail"
+           preservedRouteParameters=""
+           iconCssClass=""
+           authorizationPolicy=""
+           componentVisibility="breadcrumbs"
+           title="Detalle visita">
+        </NavNode>
+      </Children>
+    </NavNode>
+      </Children>
     </NavNode>
   </Children>
 </NavNode>

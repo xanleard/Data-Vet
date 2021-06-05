@@ -14,6 +14,7 @@ namespace VET.Site
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using VET.Core.Animals;
+    using VET.Core.Appointments;
     using VET.Core.Customers;
     using VET.Core.Sexes;
     using VET.Core.TypeAnimals;
@@ -39,28 +40,17 @@ namespace VET.Site
             services.AddCloudscribeNavigation(Configuration.GetSection("NavigationOptions"));
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
-                options.EnableSensitiveDataLogging(true);
-                options.EnableDetailedErrors(true);
-            });
-
-            services.AddDbContext<ApplicationUserDbContext>(options =>
-            {
-                options.UseSqlServer(this.Configuration.GetConnectionString("IdentityUserConnection"));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("VET.Database.Migrations.SqlServer.Migrations")).EnableSensitiveDataLogging(true).EnableDetailedErrors(true);
                 options.EnableSensitiveDataLogging(true);
                 options.EnableDetailedErrors(true);
             });
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
             .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationUserDbContext>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
             services.AddScoped<IUserCreationService, UserCreationService>();
-
-            // Build the IoC from the service collection
-            var provider = services.BuildServiceProvider();
-            var userService = provider.GetService<IUserCreationService>();
 
             services.Configure<IdentityOptions>(options =>
             {
@@ -80,7 +70,6 @@ namespace VET.Site
                 options.User.RequireUniqueEmail = false;
             });
 
-            userService.CreateUser().GetAwaiter().GetResult();
             services.ConfigureApplicationCookie(options =>
             {
                 options.AccessDeniedPath = "/Identity/Account/AccessDenied";
@@ -109,11 +98,14 @@ namespace VET.Site
             services.AddScoped<IRepository<Sex>, BaseSiteDbContextRepositoryBase<Sex>>();
             services.AddScoped<IRepository<UnitMeasurement>, BaseSiteDbContextRepositoryBase<UnitMeasurement>>();
             services.AddScoped<IRepository<Animal>, BaseSiteDbContextRepositoryBase<Animal>>();
+            services.AddScoped<IRepository<Appointment>, BaseSiteDbContextRepositoryBase<Appointment>>();
             services.AddScoped<ITypeAnimalsManager, TypeAnimalsManager>();
             services.AddScoped<ICustomersManager, CustomersManager>();
             services.AddScoped<ISexesManager, SexesManager>();
             services.AddScoped<IUnitMeasurementsManager, UnitMeasurementsManager>();
             services.AddScoped<IAnimalsManager, AnimalsManager>();
+            services.AddScoped<IAppointmentsManager, AppointmentsManager>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
