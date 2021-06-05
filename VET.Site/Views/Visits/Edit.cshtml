@@ -36,7 +36,8 @@
                         <div class="form-group">
                             <div class="form-group">
                                 <label>Cliente</label>
-                                <select class="form-control select2bs4 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))">
+                                </select>
                                 <label>
                                     <span class="right badge badge-danger " asp-validation-for="CustomerId"></span>
                                 </label>
@@ -152,13 +153,17 @@
     <script>
         $(function () {
             $('.select2').select2()
+            $(".select2bs4").prepend("<option value='' selected='selected'></option>");
+
             //Initialize Select2 Elements
             $('.select2bs4').select2({
                 theme: 'bootstrap4',
+                allowClear: true,
                 placeholder: "Seleccione un elemento",
-                allowClear: true
+
             })
 
+           // $(".select2bs4").prepend("<option value='' disabled selected>Select an option...</option>");
             //    Date picker
             $('#dateVisit').datetimepicker({
                 format: 'DD-MM-YYYY',
@@ -174,7 +179,7 @@
         var animalLoader = $('.animal-loader');
         var animalDiv = $('.animal-select');
 
-             $('#CustomerValue').change(function () {
+$('#CustomerValue').change(function () {
             LoaderAnimal.css('display', 'block');
             DivAnimal.css('display', 'none');
             var url = '@Url.Action("GetAnimals")';
@@ -188,6 +193,8 @@
                     }));
 
                 });
+
+                $("#AnimalValue").prepend("<option value='' selected='selected'></option>");
                 $('#AnimalValue').select2({
                     theme: 'bootstrap4',
                     placeholder: "Seleccione un elemento",

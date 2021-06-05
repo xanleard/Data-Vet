@@ -152,10 +152,13 @@
         $(function () {
             $('.select2').select2()
             //Initialize Select2 Elements
+            $(".select2bs4").prepend("<option value='' selected='selected'></option>");
+
             $('.select2bs4').select2({
                 theme: 'bootstrap4',
+                allowClear: true,
                 placeholder: "Seleccione un elemento",
-                allowClear: true
+               
             })
 
             //    Date picker
@@ -186,6 +189,8 @@
                     }));
 
                 });
+                
+                $("#AnimalValue").prepend("<option value='' selected='selected'></option>");
                 $('#AnimalValue').select2({
                     theme: 'bootstrap4',
                     placeholder: "Seleccione un elemento",
