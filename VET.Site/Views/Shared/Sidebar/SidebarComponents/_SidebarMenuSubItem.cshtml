@@ -1,0 +1,42 @@
+﻿@model NavigationViewModel
+
+@functions
+{
+    bool IsActive(TreeNode<NavigationNode> node)
+    {
+        return Model.CurrentNode != null && Model.CurrentNode.GetParentNodeChain(true, true).Contains(node);
+
+    }
+
+    async Task<bool> HasChildren(TreeNode<NavigationNode> node)
+    {
+        return await Model.HasVisibleChildren(node);
+    }
+}
+        @foreach (var node in Model.TempNode.Children)
+        {
+            @if (node != null && await Model.ShouldAllowView(node))
+            {
+                @if (string.IsNullOrWhiteSpace(node.Value.Url) && string.IsNullOrWhiteSpace(node.Value.Action) && !await HasChildren(node))
+                {
+                    continue;
+                }
+
+                <li class="nav-item @(await HasChildren(node) ? @"""has-treeview""" : string.Empty)">
+                    <a @(Html.Raw(IsActive(node) ? @"class=""nav-link active""" : @"class=""nav-link"""))  href="@Url.Content(Model.AdjustUrl(node))">
+                        <i class="@node.Value.IconCssClass"></i>
+                        <p>@node.Value.Title</p>
+
+                    </a>
+                    @if (await HasChildren(node))
+                    {
+                        @Model.UpdateTempNode(node)
+                        <partial name="Sidebar/SidebarComponents/_SidebarMenuSubItem" model="Model" />
+                    }
+                </li>
+            }
+        }
+
+
+
+       

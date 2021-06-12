@@ -1,0 +1,60 @@
+﻿@model NavigationViewModel
+
+@functions
+{
+    bool IsActive(TreeNode<NavigationNode> node)
+    {
+        return Model.CurrentNode != null && Model.CurrentNode.GetParentNodeChain(true, true).Contains(node);
+    }
+
+    async Task<bool> HasChildren(TreeNode<NavigationNode> node)
+    {
+        return await Model.HasVisibleChildren(node);
+    }
+}
+
+
+
+@if (await Model.HasVisibleChildren(Model.RootNode) == true)
+{
+    @foreach (var node in Model.RootNode.Children)
+    {
+        @if (node != null && await Model.ShouldAllowView(node))
+        {
+            @if (string.IsNullOrWhiteSpace(node.Value.Url) && string.IsNullOrWhiteSpace(node.Value.Action) && !await HasChildren(node))
+            {
+                continue;
+            }
+
+           
+                @*<li  class="nav-item @(await HasChildren(node) ? "has-treeview menu-open" : string.Empty) ">*@
+                  
+                <li @(Html.Raw(IsActive(node) ?
+                    await HasChildren(node) ? @"class=""nav-item has-treeview menu-open""" : string.Empty
+                     :
+                      await HasChildren(node) ? @"class=""nav-item has-treeview""": @"class=""nav-item""")
+    )>
+
+
+                <a @(Html.Raw(IsActive(node) ?
+                   @"class=""nav-link active""" : @"class=""nav-link"""))
+                   
+                   href="@Url.Content(Model.AdjustUrl(node))">
+                        <i class="@node.Value.IconCssClass"></i>
+                        <p>
+                            @node.Value.Title
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    @if (await HasChildren(node))
+                    {
+                        @Model.UpdateTempNode(node)
+                        <ul class="nav nav-treeview">
+                            <partial name="Sidebar/SidebarComponents/_SidebarMenuSubItem" model="Model" />
+                        </ul>
+                    }
+                </li>
+                }
+                }
+                }
+

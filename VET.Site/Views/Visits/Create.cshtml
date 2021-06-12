@@ -1,0 +1,204 @@
+﻿@model VET.Site.Models.Visits.CreateVisitsViewModel
+@{ ViewData["Title"] = "Crear"; }
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Crear Visita.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <form method="post">
+            <div class="card-body">
+
+
+                @if (ViewData.ModelState[string.Empty]?.Errors?.Any() == true)
+                {
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="body bg-red">
+                <div asp-validation-summary="ModelOnly"></div>
+            </div>
+        </div>
+    </div>}
+
+
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Cliente</label>
+                                <select class="form-control select2bs4 " style="width: 100%;" id="CustomerValue" asp-for="CustomerId" data-live-search="true" title="Seleccione un cliente." asp-items="@(new SelectList(Model.Customers,"Id","Name"))"></select>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="CustomerId"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="loader animal-loader align-center" style="display:none;">
+                                <div class="preloader pl-size-xs">
+                                    <div class="spinner-layer pl-light-green">
+                                        <div class="circle-clipper left">
+                                            <div class="circle"></div>
+                                        </div>
+                                        <div class="circle-clipper right">
+                                            <div class="circle"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="align-center">Cargando Animales...</p>
+                            </div>
+                            <div class="animal-select">
+                                <label asp-for="AnimalId">Animal</label>
+                                <div class="form-line">
+                                    @if (this.Model.Animals != null)
+                                    {
+                        <select class="form-control select2bs4 " style="width: 100%;" id="AnimalValue" asp-for="AnimalId" data-live-search="true" data-placeholder="Seleccione un animal."  asp-items="@(new SelectList(Model.Animals,"Id","Name"))"></select> }
+                    else
+                    {
+                        <select class="form-control select2bs4 " style="width: 100%;" id="AnimalValue" asp-for="AnimalId" data-live-search="true" data-placeholder="Seleccione un animal."></select>}
+                                </div>
+                            </div>
+                            <label>
+                                <span class="right badge badge-danger " asp-validation-for="AnimalId"></span>
+                            </label>
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Causa</label>
+                                <input asp-for="VisitDetail" class="form-control" />
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="VisitDetail"></span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Fecha</label>
+
+                                <div class="input-group date" id="dateVisit" data-target-input="nearest">
+                                    <input asp-for="DateVisit" type="text" data-date-format="mm/dd/yy" class="form-control datetimepicker-input" data-target="#dateVisit">
+                                    <div class="input-group-append" data-target="#dateVisit" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="DateVisit"></span>
+                                </label>
+                                <!-- /.input group -->
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Nota</label>
+                                @Html.TextAreaFor(m => m.NoteFirst, new { @class = "form-control" })
+                                <label>
+                                    <span class="right badge badge-danger " asp-validation-for="NoteFirst"></span>
+                                </label>
+
+                            </div>
+                        </div>
+
+                    </div>
+                <!-- /.row -->
+
+            </div>
+
+            <div class="card-footer">
+                <div align="right">
+                    <a href="#confirm" class="btn btn-primary waves-effect" data-toggle="modal" data-target="#confirm">Guardar cambios</a>
+                </div>
+                <div class="modal fade" id="confirm" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="defaultModalLabel">Crear visita</h4>
+                            </div>
+                            <div class="modal-body">
+                                ¿Desea crear visita?
+                            </div>
+                            <div class="modal-footer">
+                                <input type="submit" id="submitbutton" value="Guardar cambios" data-disableonclick="true" class="btn btn-primary waves-effect" />
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </form>
+    </div>
+    <!-- /.card -->
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $('.select2').select2()
+            //Initialize Select2 Elements
+            $(".select2bs4").prepend("<option value='' selected='selected'></option>");
+
+            $('.select2bs4').select2({
+                theme: 'bootstrap4',
+                allowClear: true,
+                placeholder: "Seleccione un elemento",
+               
+            })
+
+            //    Date picker
+            $('#dateVisit').datetimepicker({
+                format: 'DD-MM-YYYY',
+                todayHighlight: true,
+                autoclose: true,
+                language: "es"
+            });
+
+        });
+        var LoaderAnimal = $('.animal-loader');
+        var DivAnimal = $('.animal-select');
+        var animalLoader = $('.animal-loader');
+        var animalDiv = $('.animal-select');
+
+        $('#CustomerValue').change(function () {
+            LoaderAnimal.css('display', 'block');
+            DivAnimal.css('display', 'none');
+            var url = '@Url.Action("GetAnimals")';
+            $.getJSON(url, { customerId: $('#CustomerValue').val() }, function (data) {
+                $('#AnimalValue').empty();
+                $.each(data, function (i, animal) {
+
+                    $('#AnimalValue').append($('<option>', {
+                        value: animal.id,
+                        text: animal.name
+                    }));
+
+                });
+                
+                $("#AnimalValue").prepend("<option value='' selected='selected'></option>");
+                $('#AnimalValue').select2({
+                    theme: 'bootstrap4',
+                    placeholder: "Seleccione un elemento",
+                    allowClear: true
+                });
+                animalLoader.css('display', 'none');
+                animalDiv.css('display', 'block');
+            });
+        });
+    </script>
+}

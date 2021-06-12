@@ -1,0 +1,105 @@
+﻿@model VET.Site.Models.Animals.IndexAnimalsViewModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+
+
+<div class="container-fluid">
+    <!-- SELECT2 EXAMPLE -->
+    <div class="card card-default">
+        <div class="card-header">
+            <h3 class="card-title">Detalle Animal.</h3>
+
+            <div class="card-tools">
+
+
+                <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+                <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-remove"></i></button>
+            </div>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-6">
+                    <label>Cliente:</label>
+                    @Html.DisplayFor(model => model.CustomerName)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Teléfono 1:</label>
+                    @Html.DisplayFor(model => model.Telephone1)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Teléfono 2:</label>
+                    @Html.DisplayFor(model => model.Telephone2)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Correo:</label>
+                    @Html.DisplayFor(model => model.Email)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Edad:</label>
+                    @Html.DisplayFor(model => model.Age)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Nombre:</label>
+                    @Html.DisplayFor(model => model.Name)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Raza:</label>
+                    @Html.DisplayFor(model => model.Race)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Sexo:</label>
+                    @Html.DisplayFor(model => model.SexName)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Tipo animal:</label>
+                    @Html.DisplayFor(model => model.TypeAnimalName)
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <label>Peso:</label>
+                @Html.DisplayFor(model => model.UnitMeasurementName)
+            </div>
+
+                <div class="col-md-6">
+                    <label>Ultima visita:</label>
+                        @Html.DisplayFor(model => model.LastVisit)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Observaciones:</label>
+                        @Html.DisplayFor(model => model.Observations)
+                </div>
+
+                <div class="col-md-6">
+                    <label>Fecha Creación:</label>
+                        @Html.DisplayFor(model => model.CreationDate)
+                </div>
+                <div class="col-md-6">
+                    <label>
+                        Fecha Modificación:
+                    </label>
+                        @Html.DisplayFor(model => model.DateUpdate)
+                </div>
+            </div>
+            <!-- /.row -->
+
+        </div>
+        <!-- /.card-body -->
+        <div class="card-footer">
+
+        </div>
+    </div>
