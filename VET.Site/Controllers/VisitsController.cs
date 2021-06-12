@@ -94,6 +94,9 @@ namespace VET.Site.Controllers
                 return this.NotFound();
             }
 
+            animal.LastVisit = DateTime.Now;
+            await this.animalsManager.EditAsync(animal);
+
             var newanimal = new Appointment
             {
                 NoteFirst = createModel.NoteFirst,
@@ -190,6 +193,9 @@ namespace VET.Site.Controllers
             {
                 return this.NotFound();
             }
+
+            animal.LastVisit = DateTime.Now;
+            await this.animalsManager.EditAsync(animal);
 
             visitToEdit.CustomerId = editModel.CustomerId;
             visitToEdit.AnimalId = editModel.AnimalId;
